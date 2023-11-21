@@ -21,12 +21,15 @@ app.use(express.static(`${__dirname}/public`));
 initializePassport();
 app.use(passport.initialize());
 
+app.use("/", (req, res) => {
+  res.send("API from vercel");
+});
 app.use("/api/users", usersRouter);
 app.use("*", (req, res) =>
   res.status(404).send({ error: "error", message: "Page Not Found" })
 );
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 app.listen(port, () => logger.info(`Listening on port ${port}`));
 
 export default app;
