@@ -6,6 +6,8 @@ import { authToken, authorization } from "../utils.js";
 
 router.get("/", authToken, authorization("admin"), userController.getUsers);
 
+router.get("/check-jwt", authToken, userController.checkJwt);
+
 router.get(
   "/:email",
   authToken,
