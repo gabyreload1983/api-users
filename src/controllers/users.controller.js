@@ -71,7 +71,7 @@ export const register = async (req, res) => {
     res.send({
       status: "success",
       message: "user registered",
-      payload: response,
+      payload: true,
     });
   } catch (error) {
     logger.error(error.message);
@@ -97,7 +97,6 @@ export const login = async (req, res) => {
         .send({ status: "error", message: "Invalid credentials" });
 
     const userResponseDto = await userService.getByEmail(email);
-    console.log("userResponseDto: ", userResponseDto);
 
     const accessToken = generateToken(userResponseDto);
 
