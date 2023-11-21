@@ -8,11 +8,15 @@ import logger from "./logger/logger.js";
 
 import usersRouter from "./routes/users.router.js";
 
+import { __dirname } from "./utils.js";
+
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+app.use(express.static(`${__dirname}/public`));
 
 initializePassport();
 app.use(passport.initialize());
