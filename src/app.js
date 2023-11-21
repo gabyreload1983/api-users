@@ -28,3 +28,5 @@ app.use("*", (req, res) =>
 
 const port = process.env.PORT;
 app.listen(port, () => logger.info(`Listening on port ${port}`));
+
+export default app;
